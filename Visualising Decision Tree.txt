@@ -1,0 +1,19 @@
+estimator = model.estimators_[5]
+
+
+dec_tree = export_graphviz(estimator, out_file='tree.dot', feature_names=prediction_var, class_names=str(model.classes_), rounded = True, proportion = False, 
+                precision = 2, filled = True)
+
+
+
+from subprocess import call
+call(['dot', '-Tpng', 'tree.dot', '-o', 'tree.png', '-Gdpi=600'])
+
+
+
+
+from IPython.display import Image
+Image(filename = 'tree.png')
+
+
+
